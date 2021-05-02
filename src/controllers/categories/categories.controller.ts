@@ -13,33 +13,33 @@ import { CategoriesService } from 'src/services/categories/categories.service';
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(private customerService: CategoriesService) {}
+  constructor(private categoriesService: CategoriesService) {}
 
   @Post()
   create(@Body() payload: CreateCategoryDto) {
-    return this.customerService.create(payload);
+    return this.categoriesService.create(payload);
   }
 
   @Get()
   find() {
-    return this.customerService.find();
+    return this.categoriesService.find();
   }
 
-  @Get(':customerId')
-  findOne(@Param('customerId', ParseIntPipe) customerId: number) {
-    return this.customerService.findOne(customerId);
+  @Get(':categoriesId')
+  findOne(@Param('categoriesId', ParseIntPipe) categoriesId: number) {
+    return this.categoriesService.findOne(categoriesId);
   }
 
-  @Put(':customerId')
+  @Put(':categoriesId')
   updateOne(
-    @Param('customerId', ParseIntPipe) customerId: number,
+    @Param('categoriesId', ParseIntPipe) categoriesId: number,
     @Body() payload: UpdateCategoryDto,
   ) {
-    return this.customerService.updateOne(customerId, payload);
+    return this.categoriesService.updateOne(categoriesId, payload);
   }
 
-  @Delete(':customerId')
-  deleteOne(@Param('customerId', ParseIntPipe) customerId: number) {
-    return this.customerService.delete(customerId);
+  @Delete(':categoriesId')
+  deleteOne(@Param('categoriesId', ParseIntPipe) categoriesId: number) {
+    return this.categoriesService.delete(categoriesId);
   }
 }
