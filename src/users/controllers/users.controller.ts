@@ -7,13 +7,17 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { ParseIntPipe } from '../../common/parse-int.pipe';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/users.dtos';
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private configService: ConfigService,
+  ) {}
 
   @Post()
   create(@Body() payload: CreateUserDto) {
@@ -32,6 +36,7 @@ export class UsersController {
 
   @Get()
   find() {
+    console.log(this.configService.get('API_KEY'));
     return this.usersService.find();
   }
 
