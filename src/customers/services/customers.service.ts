@@ -1,19 +1,20 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateBrandDto, UpdateBrandDto } from 'src/dtos/brand.dtos';
-import { Brand } from 'src/entities/brand.entity';
+import { Customer } from '../entities/customer.entity';
+import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customers.dtos';
 
 @Injectable()
-export class BrandService {
+export class CustomersService {
   private counterId = 1;
-  private customers: Brand[] = [
+  private customers: Customer[] = [
     {
       id: 1,
       name: 'Example',
-      image: 'https://example.com/',
+      lastName: 'Example',
+      phone: '3111111212',
     },
   ];
 
-  create(payload: CreateBrandDto) {
+  create(payload: CreateCustomerDto) {
     this.counterId++;
     const newCustomer = {
       id: this.counterId,
@@ -37,7 +38,7 @@ export class BrandService {
     return this.customers;
   }
 
-  updateOne(id: number, payload: UpdateBrandDto) {
+  updateOne(id: number, payload: UpdateCustomerDto) {
     const customer = this.customers.find((item) => item.id === id);
 
     if (customer) {

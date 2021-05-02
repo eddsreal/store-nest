@@ -1,18 +1,19 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateCategoryDto, UpdateCategoryDto } from 'src/dtos/categries.dtos';
-import { Category } from 'src/entities/categories.entity';
+import { CreateBrandDto, UpdateBrandDto } from '../dtos/brand.dtos';
+import { Brand } from '../entities/brand.entity';
 
 @Injectable()
-export class CategoriesService {
+export class BrandService {
   private counterId = 1;
-  private customers: Category[] = [
+  private customers: Brand[] = [
     {
       id: 1,
       name: 'Example',
+      image: 'https://example.com/',
     },
   ];
 
-  create(payload: CreateCategoryDto) {
+  create(payload: CreateBrandDto) {
     this.counterId++;
     const newCustomer = {
       id: this.counterId,
@@ -36,7 +37,7 @@ export class CategoriesService {
     return this.customers;
   }
 
-  updateOne(id: number, payload: UpdateCategoryDto) {
+  updateOne(id: number, payload: UpdateBrandDto) {
     const customer = this.customers.find((item) => item.id === id);
 
     if (customer) {

@@ -7,11 +7,8 @@ import {
   Param,
   Body,
 } from '@nestjs/common';
-import { CustomersService } from '../../services/customers/customers.service';
-import {
-  CreateCustomerDto,
-  UpdateCustomerDto,
-} from '../../dtos/customers.dtos';
+import { CustomersService } from '../services/customers.service';
+import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customers.dtos';
 import { ParseIntPipe } from 'src/common/parse-int.pipe';
 
 @Controller('customers')

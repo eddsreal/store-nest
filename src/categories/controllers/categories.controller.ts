@@ -7,9 +7,9 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ParseIntPipe } from 'src/common/parse-int.pipe';
-import { CreateCategoryDto, UpdateCategoryDto } from 'src/dtos/categries.dtos';
-import { CategoriesService } from 'src/services/categories/categories.service';
+import { ParseIntPipe } from '../../common/parse-int.pipe';
+import { CreateCategoryDto, UpdateCategoryDto } from '../dtos/categries.dtos';
+import { CategoriesService } from '../services/categories.service';
 
 @Controller('categories')
 export class CategoriesController {

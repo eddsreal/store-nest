@@ -1,34 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsController } from './controllers/products/products.controller';
-import { CategoriesService } from './services/categories/categories.service';
-import { ProductsService } from './services/products/products.service';
-import { UsersController } from './controllers/users/users.controller';
-import { UsersService } from './services/users/users.service';
-import { CustomersController } from './controllers/customers/customers.controller';
-import { CustomersService } from './services/customers/customers.service';
-import { CategoriesController } from './controllers/categories/categories.controller';
-import { BrandController } from './controllers/brands/brands.controller';
-import { BrandService } from './services/brands/brands.service';
+import { UsersModule } from './users/users.module';
+import { ProductsModule } from './products/products.module';
+import { BrandsModule } from './brands/brands.module';
+import { CategoriesModule } from './categories/categories.module';
+import { CustomersModule } from './customers/customers.module';
 
 @Module({
-  imports: [],
-  controllers: [
-    AppController,
-    ProductsController,
-    CategoriesController,
-    UsersController,
-    CustomersController,
-    BrandController,
+  imports: [
+    UsersModule,
+    ProductsModule,
+    CategoriesModule,
+    CustomersModule,
+    BrandsModule,
   ],
-  providers: [
-    AppService,
-    ProductsService,
-    UsersService,
-    CustomersService,
-    CategoriesService,
-    BrandService,
-  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

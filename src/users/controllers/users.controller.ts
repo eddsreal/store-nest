@@ -8,8 +8,8 @@ import {
   Put,
 } from '@nestjs/common';
 import { ParseIntPipe } from '../../common/parse-int.pipe';
-import { UsersService } from '../../services/users/users.service';
-import { CreateUserDto, UpdateUserDto } from '../../dtos/users.dtos';
+import { UsersService } from '../services/users.service';
+import { CreateUserDto, UpdateUserDto } from '../dtos/users.dtos';
 
 @Controller('users')
 export class UsersController {
@@ -23,6 +23,11 @@ export class UsersController {
   @Get(':userId')
   findOne(@Param('userId', ParseIntPipe) userId: number) {
     return this.usersService.findOne(userId);
+  }
+
+  @Get(':userId/orders')
+  findOrdersByUser(@Param('userId', ParseIntPipe) userId: number) {
+    return this.usersService.findOrdersByUser(userId);
   }
 
   @Get()
