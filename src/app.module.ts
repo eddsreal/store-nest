@@ -7,11 +7,14 @@ import { BrandsModule } from './brands/brands.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CustomersModule } from './customers/customers.module';
 import { DatabaseModule } from './database/database.module';
+import { environments } from './environments';
+import config from './config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: environments[process.env.NODE_ENV] || '.env',
+      load: [config],
       isGlobal: true,
     }),
     HttpModule,
