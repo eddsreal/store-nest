@@ -10,7 +10,9 @@ import {
 import { ParseIntPipe } from '../../common/parse-int.pipe';
 import { CreateBrandDto, UpdateBrandDto } from '../dtos/brand.dtos';
 import { BrandService } from '../services/brands.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('brands')
 @Controller('brands')
 export class BrandController {
   constructor(private brandsService: BrandService) {}
