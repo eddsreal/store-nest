@@ -19,6 +19,9 @@ async function bootstrap() {
       whitelist: true, // Validates that we can't send any additional body args
     }),
   );
+
+  app.enableCors();
+
   await app.listen(3000);
 }
 bootstrap();
