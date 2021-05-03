@@ -12,7 +12,7 @@ import {
 import { ProductsService } from '../services/products.service';
 import { ParseIntPipe } from '../../common/parse-int.pipe';
 import { CreateProductDto, UpdateProductDto } from '../dtos/products.dtos';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 //  Groups in documentation with API Tags
 @ApiTags('products')
@@ -27,6 +27,7 @@ export class ProductsController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'list of products' })
   @HttpCode(HttpStatus.ACCEPTED)
   getMany(
     @Query('limit') limit = 100,
